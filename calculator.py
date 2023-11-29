@@ -1,9 +1,14 @@
-def calculator(expression):
-    try:
-        return eval(expression)
-    except Exception as e:
-        return "Erreur: " + str(e)
+class Calculator:
+    def add(self, a, b):
+        return a + b
 
-expression = input("Entrez l'opération : ")
-resultat = calculator(expression)
-print("Résultat:", resultat)
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b

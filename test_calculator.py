@@ -1,27 +1,27 @@
 import unittest
-from calculator import calculator
+from calculator import Calculator
 
-class TestCalculatrice(unittest.TestCase):
+class TestCalculator(unittest.TestCase):
 
-    def test_addition(self):
-        self.assertEqual(calculator("1 + 1"), 2)
+    def setUp(self):
+        self.calculator = Calculator()
 
-    def test_soustraction(self):
-        self.assertEqual(calculator("2 - 1"), 1)
+    def test_add(self):
+        self.assertEqual(self.calculator.add(2, 3), 5)
+        # Ajoutez plus de tests pour différents cas
 
-    def test_multiplication(self):
-        self.assertEqual(calculator("3 * 3"), 9)
+    def test_subtract(self):
+        self.assertEqual(self.calculator.subtract(5, 3), 2)
+        # Ajoutez plus de tests pour différents cas
 
-    def test_division(self):
-        self.assertEqual(calculator("10 / 2"), 5)
+    def test_multiply(self):
+        self.assertEqual(self.calculator.multiply(2, 3), 6)
+        # Ajoutez plus de tests pour différents cas
 
-    def test_division_par_zero(self):
-        self.assertEqual(calculator("5 / 0"), "Erreur: division by zero")
-
-    def test_expression_invalide(self):
-        resultat = calculator("deux plus deux")
-        self.assertTrue(resultat.startswith("Erreur: invalid syntax"))
-
+    def test_divide(self):
+        self.assertEqual(self.calculator.divide(6, 3), 2)
+        self.assertRaises(ValueError, self.calculator.divide, 6, 0)
+        # Ajoutez plus de tests pour différents cas
 
 if __name__ == '__main__':
     unittest.main()
